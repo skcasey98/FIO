@@ -1,0 +1,27 @@
+<!-- 
+  Kellen Casey
+  8/30/2021
+  FIO Awesome Inc.
+  about.html
+
+  a simple page that gives a small discription of the website.
+ -->
+{% extends "base.html" %}
+{% block name %}About{% endblock %}
+{% block content %}
+<section>
+    <h2>About the site</h2>
+
+    <div>
+        <p style="text-align: left; padding: 5px;">
+            This site was made by Kellen C. as part of the interviewing 
+            process for Team Alpha at Awesome Inc. The site makes use of 
+            flask, html, and a free wether api (Weatherbit.io). When given a city and a state
+            the site displays the forecast for that city for the next 5 days.
+        </p>
+    </div>  
+
+    <p>&nbsp</p>
+
+</section>
+{% endblock %}

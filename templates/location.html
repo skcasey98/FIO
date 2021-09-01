@@ -1,0 +1,36 @@
+<!-- 
+  Kellen Casey
+  8/30/2021
+  FIO Awesome Inc.
+  base.html
+
+  Display the forecast for the city and state that is given by the user.
+  Shows the date, description of weather, tempurature, high, low, and chance of 
+  precipitation.
+ -->
+
+{% extends "base.html" %}
+{% block name %}Location{% endblock %}
+{% block content %}
+
+<section>
+    <h2>{{city}}, {{state}}</h2>
+
+    <p>&nbsp</p>
+
+    {% for x in range(5) %}
+    <div>
+        <h4>Date: {{apiResponse[x].get('valid_date')}}</h4>
+        <h6>{{apiResponse[x]['weather'].get('description')}}</h6>
+        <h6>Temp(C): {{apiResponse[x].get('temp')}}</h6>
+        <h6>High(C): {{apiResponse[x].get('high_temp')}}</h6>
+        <h6>Low(C): {{apiResponse[x].get('low_temp')}}</h6>
+        <h6>Precipitation Chance: {{apiResponse[x].get('pop')}}%</h6>
+    </div>  
+
+    <p>&nbsp</p>
+    
+    {% endfor %}
+
+</section>
+{% endblock %}
