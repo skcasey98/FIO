@@ -20,10 +20,7 @@
 #https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing
 #https://towardsdatascience.com/how-do-i-extract-nested-data-in-python-4e7bed37566a
 
-import threading
-from flask import Flask, redirect, url_for, render_template, request
-import requests
-import json
+from flask import Flask, redirect, url_for, render_template, request, requests
 
 app = Flask(__name__)
 
