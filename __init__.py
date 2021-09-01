@@ -1,7 +1,6 @@
 #Kellen Casey
 #8/30/2021
 #FIO Awesome Inc.
-#main.py
 
 #This is the flask file that is used to render the html pages and run the 
 #web app.
