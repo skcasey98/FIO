@@ -1,7 +1,7 @@
 #Kellen Casey
 #8/30/2021
 #FIO Awesome Inc.
-#weather.py
+#main.py
 
 #This is the flask file that is used to render the html pages and run the 
 #web app.
@@ -20,6 +20,7 @@
 #https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing
 #https://towardsdatascience.com/how-do-i-extract-nested-data-in-python-4e7bed37566a
 
+import threading
 from flask import Flask, redirect, url_for, render_template, request
 import requests
 import json
@@ -34,12 +35,15 @@ def home():
     if request.method == "POST":
         cty = request.form["city"]
         st = request.form["state"]
-        baseURL = "http://api.weatherbit.io/v2.0/forecast/daily"
-        api_key = "8072824f3aeb48caa6e51f60fbb5d05b"
-        api_result = requests.get(baseURL + "?city=" + cty + "," + st + "&key=" + api_key)
-        api_response = api_result.json()
-            
-        return render_template("location.html", city=cty, state=st, apiResponse=api_response['data'])
+        if cty == '':
+            return render_template("index.html")
+        else:
+            baseURL = "http://api.weatherbit.io/v2.0/forecast/daily"
+            api_key = "8072824f3aeb48caa6e51f60fbb5d05b"
+            api_result = requests.get(baseURL + "?city=" + cty + "," + st + "&key=" + api_key)
+            api_response = api_result.json()
+                
+            return render_template("location.html", city=cty, state=st, apiResponse=api_response['data'])
     else:
         return render_template("index.html")
 
@@ -49,4 +53,4 @@ def about():
     return render_template("about.html")
 
 if __name__ == "__main__":
-    app.run(host="127.0.0.1",port=8080,debug=True)
+    app.run(threaded=True, port =5000)
